@@ -12,16 +12,9 @@ class SplashScreen extends StatelessWidget {
 
     return Scaffold(
       body: Container(
-
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.blue, Colors.deepPurple],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-        ),
+        color: Colors.black,
         child: Center(
-          child:Image.network("https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700632457.jpg",height: double.infinity,),
+          child:Image.network("https://thumbs.dreamstime.com/b/electronic-eshopping-purchase-neon-glow-icon-illustration-light-sign-vector-271243832.jpg",height: double.infinity,),
         ),
       ),
     );

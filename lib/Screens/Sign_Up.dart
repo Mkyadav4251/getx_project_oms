@@ -22,11 +22,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
     password: '',
     phoneNo: '',
     gender: '',
-    profileImage: '', // Initialize with an empty string
+    profileImage: '',
   );
   File? _profileImage;
-
-  // ... Your _pickImage and other methods ...
   Future<void> _pickImage() async {
     final pickedImage = await ImagePicker().getImage(source: ImageSource.gallery);
     if (pickedImage != null) {
@@ -53,7 +51,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     radius: 50,
                     backgroundImage: _profileImage != null
                         ? FileImage(_profileImage!)
-                        : AssetImage('') as ImageProvider<Object>,
+                        : AssetImage('assets/images/Login.png') as ImageProvider<Object>,
                   ),
                 ),
                 SizedBox(height: 16),

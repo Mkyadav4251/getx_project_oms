@@ -7,25 +7,33 @@ import 'Screens/LoginScreen.dart';
 import 'Screens/Sign_Up.dart';
 import 'Screens/splash_Screen.dart';
 import 'Share_Preference/shared_preferences_util.dart';
+import 'User_Modal/Profile_Modal.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final isLoggedIn = await isUserLoggedIn(); // Check if user is logged in
+  final isLoggedIn = await isUserLoggedIn();
+  ProfileModel? userProfile;
 
-  runApp(MyApp(isLoggedIn: isLoggedIn));
+  if (isLoggedIn) {
+    userProfile = await getUserProfile(); // Retrieve user profile data
+  }
+
+  runApp(MyApp(isLoggedIn: isLoggedIn, userProfile: userProfile));
 }
 
 class MyApp extends StatelessWidget {
   final bool isLoggedIn;
+  final ProfileModel? userProfile;
 
-  MyApp({required this.isLoggedIn});
+  MyApp({required this.isLoggedIn, this.userProfile});
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter App',
-      initialRoute: isLoggedIn ? '/home' : '/', // Navigate to home if logged in, else splash screen
+      initialRoute: isLoggedIn ? '/home' : '/',
       getPages: [
         GetPage(name: '/', page: () => SplashScreen()),
         GetPage(name: '/login', page: () => LoginScreen()),

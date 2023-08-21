@@ -2,14 +2,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
 import '../User_Modal/Profile_Modal.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final ProfileModel profile = Get.arguments;
+    final ProfileModel? profile = Get.arguments as ProfileModel?;
+
     return Scaffold(
       appBar: AppBar(title: Text('Home')),
       body: Center(
@@ -18,16 +17,16 @@ class HomeScreen extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 100,
-              backgroundImage: profile.profileImage.isNotEmpty
-                  ? FileImage(File(profile.profileImage))
-                  : AssetImage('assets/default_profile.jpg') as ImageProvider<Object>,
+              backgroundImage: profile?.profileImage.isNotEmpty ?? false
+                  ? FileImage(File(profile!.profileImage))
+                  : AssetImage('assets/images/Login.png') as ImageProvider<Object>,
             ),
             SizedBox(height: 16),
-            Text('Name: ${profile.name}'),
-            Text('Phone: ${profile.phoneNo}'),
-            Text('Password: ${profile.password}'),
-            Text('email: ${profile.email}'),
-            Text('gender: ${profile.gender}'),
+            Text('Name: ${profile?.name ?? ''}'),
+            Text('Phone: ${profile?.phoneNo ?? ''}'),
+            Text('Password: ${profile?.password ?? ''}'),
+            Text('Email: ${profile?.email ?? ''}'),
+            Text('Gender: ${profile?.gender ?? ''}'),
           ],
         ),
       ),
@@ -37,26 +36,22 @@ class HomeScreen extends StatelessWidget {
           children: [
             DrawerHeader(
               decoration: BoxDecoration(color: Colors.blue),
-              child:  Container(
+              child: Container(
                 decoration: BoxDecoration(
-
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: profile.profileImage.isNotEmpty
-                        ? FileImage(File(profile.profileImage))
-                        : AssetImage("")as ImageProvider<Object>,
+                    image: profile?.profileImage.isNotEmpty ?? false
+                        ? FileImage(File(profile!.profileImage))
+                        : AssetImage('assets/images/Login.png') as ImageProvider<Object>,
                   ),
                 ),
-              )
-
+              ),
             ),
             ListTile(
-              title:Text('Name: ${profile.name}'),
-
+              title: Text('Name: ${profile?.name ?? ''}'),
             ),
             ListTile(
-              title: Text('Phone: ${profile.phoneNo}'),
-
+              title: Text('Phone: ${profile?.phoneNo ?? ''}'),
             ),
             ListTile(
               title: Text('Logout'),

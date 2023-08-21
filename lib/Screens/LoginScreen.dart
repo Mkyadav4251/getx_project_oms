@@ -58,7 +58,8 @@ class LoginScreen extends StatelessWidget {
                       await setIsUserLoggedIn(true);
                       final profile = await getUserProfile(); // Retrieve profile from SharedPreferences
                       Get.offAllNamed('/home', arguments: profile); // Pass the retrieved profile as arguments
-                    } else {
+                    }
+                    else {
                       Get.snackbar('Login Failed', 'Invalid email or password');
                     }
                   }
@@ -69,7 +70,7 @@ class LoginScreen extends StatelessWidget {
               SizedBox(height: 16),
               TextButton(
                 onPressed: () {
-                  // Navigate to sign up screen
+
                   Get.toNamed('/signup');
                 },
                 child: Text('Don\'t have an account? Sign Up'),

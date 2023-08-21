@@ -9,7 +9,7 @@ Future<void> saveUserProfile(ProfileModel profile) async {
   prefs.setString('password', profile.password);
   prefs.setString('phoneNo', profile.phoneNo);
   prefs.setString('gender', profile.gender);
-  prefs.setString('profileImage', profile.profileImage); // Save profile image path
+  prefs.setString('profileImage', profile.profileImage);
 }
 
 Future<ProfileModel?> getUserProfile() async {
@@ -19,7 +19,7 @@ Future<ProfileModel?> getUserProfile() async {
   String? password = prefs.getString('password');
   String? phoneNo = prefs.getString('phoneNo');
   String? gender = prefs.getString('gender');
-  String? profileImage = prefs.getString('profileImage'); // Retrieve profile image path
+  String? profileImage = prefs.getString('profileImage');
   if (name != null && email != null && password != null && phoneNo != null && gender != null && profileImage != null) {
     return ProfileModel(
       name: name,
